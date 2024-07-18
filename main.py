@@ -1,6 +1,7 @@
 import modadd
 import modremove
 import modlist
+from datetime import datetime
 import os
 
 tarefas = []
@@ -15,7 +16,7 @@ def menu():
         print("* 4 - Sair           *")
         print("**********************")
         opcao = int(input("Opção: "))
-        print(f"Opção escolhida: {opcao}")        
+        #print(f"Opção escolhida: {opcao}")        
         match(opcao):
             case 1:
                 modadd.adicionar(tarefas)
@@ -28,3 +29,9 @@ def menu():
                 print("Saindo...")
                 break      
 menu()
+
+with open(f'Lista de Tarefas({datetime.now().strftime('%H.%M.%S - %d.%m.%Y')}).txt', 'w') as gravar:
+    for item in tarefas:
+        gravar.write(f"{item}\n")
+print("Lista Armazenada com sucesso...")
+

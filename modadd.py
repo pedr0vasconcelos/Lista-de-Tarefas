@@ -1,13 +1,7 @@
 import os
 def adicionar(tarefas):
     while True:
-        item = input("Digite a tarefa: ")
-        tarefas.append(item)
-        continuar = input("Deseja continuar? S/N: ")
-        if continuar.lower() == "n":
-            
+        item = input("Digite a tarefa (ou pressione Enter para sair): ").strip()
+        if not item:  # Se a entrada estiver vazia, sai do loop
             break
-        elif continuar.lower() == "s":
-            continue
-        else:
-            print("Opção inválida! Tente novamente: ")
+        tarefas.append(item)
